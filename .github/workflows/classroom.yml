@@ -25,9 +25,35 @@ jobs:
         comparison-method: contains
         timeout: 3
         max-score: 10
+    - name: Celsius para Kelvin
+      id: celsius-para-kelvin
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Celsius para Kelvin
+        setup-command: gcc tarefas/tarefa2.c -o tarefa2.o
+        command: "./tarefa2.o"
+        input: '5'
+        expected-output: '278.15'
+        comparison-method: contains
+        timeout: 3
+        max-score: 10
+    - name: Celsius para Fahrenheit
+      id: celsius-para-fahrenheit
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Celsius para Fahrenheit
+        setup-command: gcc tarefas/tarefa2.c -o tarefa2.o
+        command: "./tarefa2.o"
+        input: '5'
+        expected-output: '41'
+        comparison-method: contains
+        timeout: 3
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PRIMEIRO_RESULTS: "${{steps.primeiro.outputs.result}}"
+        CELSIUS-PARA-KELVIN_RESULTS: "${{steps.celsius-para-kelvin.outputs.result}}"
+        CELSIUS-PARA-FAHRENHEIT_RESULTS: "${{steps.celsius-para-fahrenheit.outputs.result}}"
       with:
-        runners: primeiro
+        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit
