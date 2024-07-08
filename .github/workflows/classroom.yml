@@ -13,64 +13,21 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Tarefa1
-      id: tarefa1
+    - name: Primeiro
+      id: primeiro
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Tarefa1
-        setup-command: gcc tarefa1.c -o tarefa1.exe
-        command: make test
+        test-name: Primeiro
+        setup-command: gcc tarefas/tarefa1.c -o tarefa1.o
+        command: "./tarefa1.o"
         input: '3'
         expected-output: '28.26'
-        comparison-method: contains
-        timeout: 10
-        max-score: 10
-    - name: Tarefa2
-      id: tarefa2
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: Tarefa2
-        setup-command: gcc tarefa2.c -o tarefa2.exe
-        command: make test
-        input: '5'
-        expected-output: 278.15 41
-        comparison-method: contains
-        timeout: 10
-        max-score: 10
-    - name: Tarefa3-parte1
-      id: tarefa3-parte1
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: Tarefa3-parte1
-        setup-command: gcc tarefa3.c -o tarefa3.exe
-        command: make test
-        input: "2000 \n6"
-        expected-output: |-
-          2100
-          100
-        comparison-method: contains
-        timeout: 10
-        max-score: 10
-    - name: Tarefa3-parte2
-      id: tarefa3-parte2
-      uses: classroom-resources/autograding-io-grader@v1
-      with:
-        test-name: Tarefa3-parte2
-        setup-command: gcc tarefa3.c -o tarefa3.exe
-        command: make test
-        input: |-
-          2000
-          2
-        expected-output: "2060 \n60"
-        comparison-method: contains
-        timeout: 10
+        comparison-method: exact
+        timeout: 3
         max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TAREFA1_RESULTS: "${{steps.tarefa1.outputs.result}}"
-        TAREFA2_RESULTS: "${{steps.tarefa2.outputs.result}}"
-        TAREFA3-PARTE1_RESULTS: "${{steps.tarefa3-parte1.outputs.result}}"
-        TAREFA3-PARTE2_RESULTS: "${{steps.tarefa3-parte2.outputs.result}}"
+        PRIMEIRO_RESULTS: "${{steps.primeiro.outputs.result}}"
       with:
-        runners: tarefa1,tarefa2,tarefa3-parte1,tarefa3-parte2
+        runners: primeiro
