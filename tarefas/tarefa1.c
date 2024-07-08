@@ -12,5 +12,5 @@ int main() {
     scanf("%f", &r);
 
     printf("%f\n", pi*r*r);
-    return 0;
+    return pi*r*r;
 }
