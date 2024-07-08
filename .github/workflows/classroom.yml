@@ -122,6 +122,30 @@ jobs:
         comparison-method: contains
         timeout: 5
         max-score: 10
+    - name: Tempo-zero
+      id: tempo-zero
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Tempo-zero
+        setup-command: gcc tarefas/tarefa5.c -o tarefa5.o
+        command: "./tarefa5.o"
+        input: '300'
+        expected-output: '0'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Tempo
+      id: tempo
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Tempo
+        setup-command: gcc tarefas/tarefa5.c -o tarefa5.o
+        command: "./tarefa5.o"
+        input: '1200'
+        expected-output: '2'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -132,5 +156,7 @@ jobs:
         DEPOSITAR_RESULTS: "${{steps.depositar.outputs.result}}"
         SACAR_RESULTS: "${{steps.sacar.outputs.result}}"
         SACAR-ZERO_RESULTS: "${{steps.sacar-zero.outputs.result}}"
+        TEMPO-ZERO_RESULTS: "${{steps.tempo-zero.outputs.result}}"
+        TEMPO_RESULTS: "${{steps.tempo.outputs.result}}"
       with:
-        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit,salario-5,salario-5,depositar,sacar,sacar-zero
+        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit,salario-5,salario-5,depositar,sacar,sacar-zero,tempo-zero,tempo
