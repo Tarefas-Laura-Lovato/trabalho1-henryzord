@@ -8,7 +8,6 @@ int main() {
 
     float r;
 
-    printf("digite um raio: ");
     scanf("%f", &r);
 
     printf("%.2f\n", pi*r*r);
