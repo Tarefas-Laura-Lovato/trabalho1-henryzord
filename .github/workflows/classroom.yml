@@ -77,6 +77,51 @@ jobs:
         comparison-method: contains
         timeout: 5
         max-score: 10
+    - name: Depositar
+      id: depositar
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Depositar
+        setup-command: gcc tarefas/tarefa4.c -o tarefa4.o
+        command: "./tarefa4.o"
+        input: |-
+          100
+          1
+          200
+        expected-output: '300'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Sacar
+      id: sacar
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Sacar
+        setup-command: gcc tarefas/tarefa4.c -o tarefa4.o
+        command: "./tarefa4.o"
+        input: |-
+          300
+          2
+          100
+        expected-output: '200'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Sacar-zero
+      id: sacar-zero
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Sacar-zero
+        setup-command: gcc tarefas/tarefa4.c -o tareaf4.o
+        command: "./tarefa4.o"
+        input: |-
+          100
+          2
+          300
+        expected-output: '100'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -84,5 +129,8 @@ jobs:
         CELSIUS-PARA-KELVIN_RESULTS: "${{steps.celsius-para-kelvin.outputs.result}}"
         CELSIUS-PARA-FAHRENHEIT_RESULTS: "${{steps.celsius-para-fahrenheit.outputs.result}}"
         SALARIO-5_RESULTS: "${{steps.salario-5.outputs.result}}"
+        DEPOSITAR_RESULTS: "${{steps.depositar.outputs.result}}"
+        SACAR_RESULTS: "${{steps.sacar.outputs.result}}"
+        SACAR-ZERO_RESULTS: "${{steps.sacar-zero.outputs.result}}"
       with:
-        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit,salario-5,salario-5
+        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit,salario-5,salario-5,depositar,sacar,sacar-zero
