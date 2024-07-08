@@ -5,7 +5,11 @@
 
 int main() {
 
-    //código
+    float c;
+    printf("digite a temperatura em celsius:");
+    scanf("%f", &c);
+    printf("farenheit: %f\n", (c * 9/5) + 32);
+    printf("kelvin: %f\n", c - 273);
 
     return 0;
 }

@@ -1,4 +1,6 @@
-//O usuário entra com o saldo e escolhe se deseja sacar ou depositar, ele insere a quantia, deve retornar o saldo da conta ao final da operção. Utilize switch case.
+//O usuário entra com o saldo e escolhe se deseja sacar ou 
+// depositar, ele insere a quantia, deve retornar o saldo 
+// da conta ao final da operção. Utilize switch case.
 
 #include <stdio.h>
 #include <math.h>
