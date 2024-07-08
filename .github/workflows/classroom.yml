@@ -49,11 +49,40 @@ jobs:
         comparison-method: contains
         timeout: 3
         max-score: 10
+    - name: 'Salario +5 '
+      id: salario-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: 'Salario +5 '
+        setup-command: gcc tarefas/tarefa3.c -o tarefa3.o
+        command: "./tarefa3.o"
+        input: |-
+          2000
+          7
+        expected-output: '2100'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Salario -5
+      id: salario-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Salario -5
+        setup-command: gcc tarefas/tarefa3.c -o tarefa3.o
+        command: "./tarefa3.o"
+        input: |-
+          2000
+          3
+        expected-output: '2060'
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PRIMEIRO_RESULTS: "${{steps.primeiro.outputs.result}}"
         CELSIUS-PARA-KELVIN_RESULTS: "${{steps.celsius-para-kelvin.outputs.result}}"
         CELSIUS-PARA-FAHRENHEIT_RESULTS: "${{steps.celsius-para-fahrenheit.outputs.result}}"
+        SALARIO-5_RESULTS: "${{steps.salario-5.outputs.result}}"
       with:
-        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit
+        runners: primeiro,celsius-para-kelvin,celsius-para-fahrenheit,salario-5,salario-5
