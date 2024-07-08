@@ -11,6 +11,6 @@ int main() {
     printf("digite um raio: ");
     scanf("%f", &r);
 
-    printf("%f\n", pi*r*r);
-    return pi*r*r;
+    printf("%.2f\n", pi*r*r);
+    return 0;
 }
