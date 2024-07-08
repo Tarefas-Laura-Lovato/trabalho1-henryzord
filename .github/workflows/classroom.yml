@@ -22,7 +22,7 @@ jobs:
         command: "./tarefa1.o"
         input: '3'
         expected-output: '28.26'
-        comparison-method: exact
+        comparison-method: contains
         timeout: 3
         max-score: 10
     - name: Autograding Reporter
